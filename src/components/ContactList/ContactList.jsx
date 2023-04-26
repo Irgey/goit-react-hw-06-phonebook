@@ -1,10 +1,25 @@
+import { useSelector } from 'react-redux';
 import { ContactElement } from 'components';
 import PropTypes from 'prop-types';
+import { getContacts, getFilter } from 'redux/selectors';
 
-const ContactList = ({ contacts, onClickDeleteBtn }) => {
+const ContactList = ({ onClickDeleteBtn }) => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+  const renderContacts = () => {
+    if (filter) {
+      const normalizedFilter = filter.toLowerCase();
+      const filteredContacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(normalizedFilter)
+      );
+      return filteredContacts;
+    }
+    return contacts;
+  };
+
   return (
     <ul>
-      {contacts.map(({ name, number, id }) => (
+      {renderContacts().map(({ name, number, id }) => (
         <ContactElement
           name={name}
           number={number}
