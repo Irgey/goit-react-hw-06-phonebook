@@ -1,13 +1,12 @@
 /**
  * Refactored with hooks
  */
-import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+import { useEffect } from 'react';
 import { ContactForm, ContactList, Filter } from './index';
 import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 export const App = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   // const [contacts, setContacts] = useState(() => {
   //   const localStorageContacts = localStorage.getItem('contacts');
   //   if (localStorageContacts) {
@@ -20,7 +19,7 @@ export const App = () => {
   //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   //   ];
   // });
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   useEffect(() => {
     //componentDidUpdate(prevProps, prevState)
     localStorage.setItem('contacts', JSON.stringify(contacts));

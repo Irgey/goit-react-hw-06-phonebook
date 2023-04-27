@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+import { deleteContact } from 'redux/slice';
 import PropTypes from 'prop-types';
 import css from './ContactElement.module.css';
 const ContactElement = ({ name, number, onClickDeleteBtn, id }) => {

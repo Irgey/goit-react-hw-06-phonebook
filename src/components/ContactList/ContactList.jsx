@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { ContactElement } from 'components';
 import PropTypes from 'prop-types';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 
 const ContactList = ({ onClickDeleteBtn }) => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const renderContacts = () => {
     if (filter) {
       const normalizedFilter = filter.toLowerCase();

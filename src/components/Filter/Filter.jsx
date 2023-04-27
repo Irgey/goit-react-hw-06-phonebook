@@ -1,11 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
-import { setFilter } from 'redux/actions';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/slice';
 import PropTypes from 'prop-types';
 
-const Filter = ({ value, onFilterElements }) => {
+const Filter = ({ value }) => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
 
   const handleChange = e => {
     dispatch(setFilter(e.target.value));
@@ -22,5 +20,4 @@ export default Filter;
 
 Filter.propTypes = {
   value: PropTypes.string,
-  onFilterElements: PropTypes.func.isRequired,
 };
