@@ -1,7 +1,6 @@
 /**
  * Refactored with hooks
  */
-import { useEffect } from 'react';
 import { ContactForm, ContactList, Filter } from './index';
 import { useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
@@ -20,10 +19,6 @@ export const App = () => {
   //   ];
   // });
   const contacts = useSelector(selectContacts);
-  useEffect(() => {
-    //componentDidUpdate(prevProps, prevState)
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
   /**
    * Own methods
    */
